@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        .group {
+            font-style: italic;
+            color: rgb(151, 11, 11); 
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse; 
+            margin-bottom: 20px; 
+        }
+        th, td {
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: left; 
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+    <p>ПІБ студента: {{ student_name }}</p>
+    <p class="group">Група: {{ group }}</p>
+
+    <h2>Список співробітників</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ПІБ</th>
+                <th>Посада</th>
+                <th>Відділ</th>
+                <th>Телефон</th>
+                <th>Адреса</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+                <tr>
+                    <td>{{ employee }}</td>
+                    <td>{{ employee.position }}</td>
+                    <td>{{ employee.department }}</td>
+                    <td>{{ employee.phone }}</td>
+                    <td>{{ employee.address }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Список посад</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Посада</th>
+                <th>Зарплата</th>
+                <th>Бонус (%)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for position in positions %}
+                <tr>
+                    <td>{{ position }}</td>
+                    <td>{{ position.salary }}</td>
+                    <td>{{ position.bonus_percentage }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Список відділів</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Відділ</th>
+                <th>Телефон</th>
+                <th>Номер кімнати</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for department in departments %}
+                <tr>
+                    <td>{{ department }}</td>
+                    <td>{{ department.phone }}</td>
+                    <td>{{ department.room_number }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Список проектів</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Проект</th>
+                <th>Термін виконання</th>
+                <th>Фінансування</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in projects %}
+                <tr>
+                    <td>{{ project }}</td>
+                    <td>{{ project.deadline }}</td>
+                    <td>{{ project.funding }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h2>Виконання проектів</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Проект</th>
+                <th>Відділ</th>
+                <th>Дата початку</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for project in project_executions %}
+                <tr>
+                    <td>{{ project.project }}</td>
+                    <td>{{ project.department }}</td>
+                    <td>{{ project.start_date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
